@@ -29,6 +29,15 @@ namespace PatientsWebApi.Features.Patients.UseCases.Queries.GetAllPatientsQeury
                 return Errors.PatientErrors.FailToFetchPatients;
             }
 
+            if (request.BirthDateTo.HasValue && request.BirthDate.HasValue)
+            {
+                patients = request.SearchType switch
+                {
+                    "range" => patients.Where(x => x.BirthDate >= request.BirthDate && x.BirthDate <= request.BirthDateTo),
+                };
+                return new GetAllPatientsResult(patients.ToList());
+            }
+
             if (request.BirthDate.HasValue)
             {
                 patients = request.SearchType switch
@@ -40,14 +49,7 @@ namespace PatientsWebApi.Features.Patients.UseCases.Queries.GetAllPatientsQeury
                     "le" => patients.Where(x => x.BirthDate <= request.BirthDate),
                     "ge" => patients.Where(x => x.BirthDate >= request.BirthDate),
                 };
-
-                if (request.BirthDateTo.HasValue)
-                {
-                    patients = request.SearchType switch
-                    {
-                        "range" => patients.Where(x => x.BirthDate >= request.BirthDate && x.BirthDate <= request.BirthDateTo),
-                    };
-                }
+                return new GetAllPatientsResult(patients.ToList());
             }
 
             return new GetAllPatientsResult(patients.ToList());
