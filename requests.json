@@ -1,0 +1,258 @@
+{
+	"info": {
+		"_postman_id": "56d7c59c-8c71-4886-bebf-520cd6c68f1d",
+		"name": "Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16014524"
+	},
+	"item": [
+		{
+			"name": "Get all patients greater than",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8898/api/patients?searchType=gt&birthDate=2016-12-14",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8898",
+					"path": [
+						"api",
+						"patients"
+					],
+					"query": [
+						{
+							"key": "searchType",
+							"value": "gt"
+						},
+						{
+							"key": "birthDate",
+							"value": "2016-12-14"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all patients greater than Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8898/api/patients?searchType=range&birthDate=2010-12-14&birthDateTo=2020-12-14",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8898",
+					"path": [
+						"api",
+						"patients"
+					],
+					"query": [
+						{
+							"key": "searchType",
+							"value": "range"
+						},
+						{
+							"key": "birthDate",
+							"value": "2010-12-14"
+						},
+						{
+							"key": "birthDateTo",
+							"value": "2020-12-14"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create patient",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9naXZlbm5hbWUiOiJmIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc3VybmFtZSI6ImwiLCJleHAiOjE3MDU1ODg3NzMsImlzcyI6IlNob3BweUFwcCIsImF1ZCI6IlNob3BweUFwcCJ9.tcXLNUgPf5_uAZ3lnlUKFqP2BHWkaeAsGsKP5S83FrM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "BirthDate",
+							"value": "1998/01/02 00:00:00",
+							"type": "text"
+						},
+						{
+							"key": "GenderId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "IsOfficial",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "Family",
+							"value": "Maximov",
+							"type": "text"
+						},
+						{
+							"key": "Given",
+							"value": "Maxim,Maximovich",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "asdas",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8898/api/patients",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8898",
+					"path": [
+						"api",
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update patient",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9naXZlbm5hbWUiOiJmIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc3VybmFtZSI6ImwiLCJleHAiOjE3MDU1ODg3NzMsImlzcyI6IlNob3BweUFwcCIsImF1ZCI6IlNob3BweUFwcCJ9.tcXLNUgPf5_uAZ3lnlUKFqP2BHWkaeAsGsKP5S83FrM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "PatientId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "BirthDate",
+							"value": "1998/01/02",
+							"type": "text"
+						},
+						{
+							"key": "GenderId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "IsOfficial",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "IsActive",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "Family",
+							"value": "ADDDS",
+							"type": "text"
+						},
+						{
+							"key": "Given",
+							"value": "Maxim,Maximovich",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8898/api/patients",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8898",
+					"path": [
+						"api",
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete patient",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9naXZlbm5hbWUiOiJmIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc3VybmFtZSI6ImwiLCJleHAiOjE3MDU1ODg3NzMsImlzcyI6IlNob3BweUFwcCIsImF1ZCI6IlNob3BweUFwcCJ9.tcXLNUgPf5_uAZ3lnlUKFqP2BHWkaeAsGsKP5S83FrM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8898/api/patients",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8898",
+					"path": [
+						"api",
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all patients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8898/api/patients",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8898",
+					"path": [
+						"api",
+						"patients"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
