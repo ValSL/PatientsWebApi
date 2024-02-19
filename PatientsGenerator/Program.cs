@@ -13,3 +13,4 @@ foreach (var patient in patients)
 }
 
 Console.WriteLine($"Added {numberOfPatientsToAdd} patients.");
+Console.ReadLine();

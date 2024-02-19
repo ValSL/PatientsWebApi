@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.Xml;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -24,7 +25,7 @@ namespace PatientsWebApi.Features.Patients.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("Host=localhost;Database=postgres;Username=valsl;Password=etereg14");
+                optionsBuilder.UseNpgsql("Host=postgres;Database=postgres;Username=valsl;Password=etereg14");
             }
         }
 
@@ -44,7 +45,12 @@ namespace PatientsWebApi.Features.Patients.Models
 
                 entity.Property(e => e.Name).HasColumnName("name");
             });
-
+            modelBuilder.Entity<Gender>().HasData(
+                new Gender { Id = 1, Name = "male" },
+                new Gender { Id = 2, Name = "female" },
+                new Gender { Id = 3, Name = "other" },
+                new Gender { Id = 4, Name = "unknown" }
+                );
             modelBuilder.Entity<Patient>(entity =>
             {
                 entity.ToTable("patient");
@@ -63,8 +69,8 @@ namespace PatientsWebApi.Features.Patients.Models
                     .HasColumnName("gender_id");
 
                 entity.Property(e => e.NameId)
-                    .HasColumnName("name_id")
-                    .HasDefaultValueSql("nextval('patient_name_id_seq1'::regclass)");
+                    .HasColumnName("name_id");
+                    //.HasDefaultValueSql("nextval('patient_name_id_seq1'::regclass)");
 
                 entity.HasOne(d => d.Gender)
                     .WithMany(p => p.Patients)
@@ -75,7 +81,7 @@ namespace PatientsWebApi.Features.Patients.Models
                 entity.HasOne(d => d.Name)
                     .WithMany(p => p.Patients)
                     .HasForeignKey(d => d.NameId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("patient_patient_name_id_fk");
             });
 

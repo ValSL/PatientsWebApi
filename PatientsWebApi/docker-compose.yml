@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: PatientsWebApi/Dockerfile
+    restart: on-failure
   postgres:
     image: postgres
     environment:

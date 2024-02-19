@@ -27,9 +27,12 @@ var app = builder.Build();
         app.UseSwaggerUI();
     }
 
-    app.UseHttpsRedirection();
-
-
+    app.UseHttpsRedirection();    
     app.MapCarter();
+    
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<PostgresContext>();
+    db.Database.Migrate();
+
     app.Run();
 }
